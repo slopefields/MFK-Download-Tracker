@@ -25,17 +25,19 @@ jobs:
           echo "Contents:"
           cat data.json
 
-      - name: Validate fetched data (Is it empty?)
+      - name: Validate fetched data and date
         run: |
           if [ ! -s data.json ]; then
             echo "data.json is empty"
             exit 1
           fi
+          echo "Current time and date is: $(date +'%m/%d/%y %H:%M')"
 
       - name: Commit fetched data to repo
+        shell: bash
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git commit -m "Update data.json with latest data from ($(date +%D %R))"
+          git commit -m "Update data.json with latest data from ($(date +'%m/%d/%y %H:%M'))"
           git push
