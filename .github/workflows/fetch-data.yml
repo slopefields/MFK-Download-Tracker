@@ -20,7 +20,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Fetch mod data from Thunderstore
-        run: curl -o data.json https://thunderstore.io/api/v1/package-metrics/Plotection/MoneyForKills
+        run: |
+          curl -v data.json https://thunderstore.io/api/v1/package-metrics/Plotection/MoneyForKills
+          curl -o data.json https://thunderstore.io/api/v1/package-metrics/Plotection/MoneyForKills
+
+      - name: Print fetched data
+        run: cat data.json
 
       - name: Commit fetched data to repo
         run: |
