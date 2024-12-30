@@ -1,0 +1,24 @@
+{
+  "name": "thunderstore-analytics",
+  "version": "1.0.0",
+  "description": "Server to store mod data using SQLite",
+  "homepage": "https://github.com/slopefields/ThunderstoreAnalytics#readme",
+  "bugs": {
+    "url": "https://github.com/slopefields/ThunderstoreAnalytics/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slopefields/ThunderstoreAnalytics.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "sqlite": "^5.1.1"
+  }
+}
