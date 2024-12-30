@@ -1,6 +1,7 @@
 name: Fetch Thunderstore Mod Data
 
 on:
+  workflow_dispatch:
   schedule:
     # Run at 8am and 12pm UTC (12am and 12pm PST)
     - cron: "0 8,20 * * *"
