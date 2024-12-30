@@ -19,13 +19,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Fetch mod data from Thunderstore
+      - name: Fetch mod data from Thunderstore and print contents
         run: |
-          curl -v data.json https://thunderstore.io/api/v1/package-metrics/Plotection/MoneyForKills
           curl -o data.json https://thunderstore.io/api/v1/package-metrics/Plotection/MoneyForKills
+          echo "Contents:"
+          cat data.json
 
-      - name: Print fetched data
-        run: cat data.json
+      - name: Validate fetched data (Is it empty?)
+        run: |
+          if [!-s data.json]
+            echo "data.json is empty"
+            exit 1;
+          fi
 
       - name: Commit fetched data to repo
         run: |
