@@ -21,7 +21,7 @@ jobs:
 
       - name: Fetch mod data from Thunderstore and print contents
         run: |
-          curl -o data.json https://thunderstore.io/api/v1/package-metrics/Plotection/MoneyForKills
+          curl -v -o data.json https://thunderstore.io/api/v1/package-metrics/Plotection/MoneyForKills
           echo "Contents:"
           cat data.json
 
