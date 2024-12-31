@@ -10,7 +10,7 @@ on:
     # 8,20 = 8am and 8pm UTC
     # * = Every day of month
     # * = Every month of year
-    # * = Every week of month
+    # * = Every day of week
 
 jobs:
   get-data:
