@@ -3,11 +3,11 @@ name: Fetch Thunderstore Mod Data
 on:
   workflow_dispatch:
   schedule:
-    # Run at 8am and 12pm UTC (12am and 12pm PST)
-    - cron: "0 8,20 * * *"
+    # Run at 8am UTC (12am PST)
+    - cron: "0 8 * * *"
     # cron formatting:
     # 0 = minute
-    # 8,20 = 8am and 8pm UTC
+    # 8 = 8am UTC
     # * = Every day of month
     # * = Every month of year
     # * = Every day of week
