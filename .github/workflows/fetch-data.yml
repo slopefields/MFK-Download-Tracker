@@ -43,7 +43,7 @@ jobs:
           git push
 
       - name: Install Node.js
-        uses: actions/install-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: "22"
 
