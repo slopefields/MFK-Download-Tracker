@@ -42,10 +42,12 @@ jobs:
           git commit -m "Update data.json with latest data from ($(date +'%m/%d/%y %H:%M'))"
           git push
 
-      - name: Install Node.js and dependencies
+      - name: Install Node.js
         uses: actions/install-node@v4
         with:
           node-version: "22"
+
+      - name: Install dependencies, if any
         run: npm install
 
       - name: Run update-database.js to upload data to modmetrics.db
