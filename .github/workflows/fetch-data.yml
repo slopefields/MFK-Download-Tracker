@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Fetch mod data from Thunderstore and print contents
         run: |
@@ -41,3 +41,12 @@ jobs:
           git add data.json
           git commit -m "Update data.json with latest data from ($(date +'%m/%d/%y %H:%M'))"
           git push
+
+      - name: Install Node.js and dependencies
+        uses: actions/install-node@v4
+        with:
+          node-version: "22"
+        run: npm install
+
+      - name: Run update-database.js to upload data to modmetrics.db
+        run: node update-database.js
