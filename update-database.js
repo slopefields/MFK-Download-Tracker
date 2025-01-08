@@ -5,7 +5,7 @@ const dbPath = './modmetrics.db';
 const dataPath = './data.json';
 
 // Using sync so that it waits to fully read before continuing
-const jsonData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+const jsonData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
 const database = new sqlite3.Database(dbPath, err => {
     if (err) 
@@ -16,7 +16,7 @@ const database = new sqlite3.Database(dbPath, err => {
 
 // Get current date
 const currentDate = new Date();
-const year = currentDate.getFullYear();
+const year = currentDate.getFullYear(); 
 const month = currentDate.getMonth() + 1; // Adding 1 because zero-indexed (Jan = 0, Sep = 8, etc.)
 const day = currentDate.getDate(); // getDay returns day of the week (like Monday) while getDate returns day of month (like 23)
 
