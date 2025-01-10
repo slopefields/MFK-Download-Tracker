@@ -2,12 +2,12 @@ fetch('./data.json')
         .then(response => 
         {
             if(!response.ok)
-                throw new Error('Error with response: ${response.status}');
+                throw new Error(`Error with response: ${response.status}`);
             return response.json();
         })
         .then (data =>
         {
-            document.getElementById('downloads').textContent = 'Total Downloads: ${data.downloads}';
+            document.getElementById('downloads').textContent = `Total Downloads: ${data.downloads}`;
         })
         .catch(error => 
         {
