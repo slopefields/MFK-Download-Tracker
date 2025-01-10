@@ -8,7 +8,17 @@
 <body>
     <h1>Metrics for <a href="https://thunderstore.io/c/lethal-company/p/Plotection/MoneyForKills/">MoneyForKills</a></h1>
     <p id='downloads'>Fetching all time download data...</p>
-    <p id = 'downloads-today'>Fetching download data for today...</p>
+
+    <label for="date-range">Choose date range:</label>
+
+    <select name ="date-range">
+    <option value="today">Today</option>
+    <option value="week">This Week</option>
+    <option value="month">This Month</option>
+    <option value="year">This Year</option>
+    </select>
+    
+    <p id = 'downloads-today'>Fetching download data for date range...</p>
     <script src = 'script.js'></script>
 </body>
 </html>
