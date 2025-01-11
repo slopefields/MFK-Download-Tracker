@@ -7,7 +7,17 @@ fetch('./data.json')
         })
         .then (data =>
         {
-            document.getElementById('downloads').textContent = `Total Downloads: ${data.downloads}`;
+            const difference = 3;
+
+            const downloadsElement = document.getElementById('downloads');
+            downloadsElement.textContent = `Total Downloads: ${data.downloads}`;
+            
+            const differenceText = difference >= 0 ? ` (+${difference} compared to yesterday)` : ` (-${difference} compared to yesterday)`;
+            const tempDifference = document.createElement('difference');
+            tempDifference.textContent = differenceText;
+            tempDifference.style.color = difference >= 0 ? 'green' : 'red';
+            
+            downloadsElement.appendChild(tempDifference);
         })
         .catch(error => 
         {
