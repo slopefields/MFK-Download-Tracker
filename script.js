@@ -9,6 +9,20 @@ const database = new sqlite3.Database(dbPath, data =>
         console.log('Successfully connected to modmetrics database in script.js.');
 });
 
+// Sorts rows by date in descending order, restricts to first two rows, and retrieves values for "downloads"
+const query = 'SELECT downloads FROM metrics ORDER BY year DESC, month DESC, day DESC LIMIT 2';
+
+database.all(query, (err, rows) =>
+{
+    if (err)
+        console.error("Error querying database: ", err.message);
+    else if (rows.length == 2)
+    {
+        const [today, yesterday] = rows;
+        const difference = today.downloads - yesterday.downloads;
+    }
+});
+
 // Retrieve data.json file
 fetch('./data.json')
         // Handle HTTP-level errors like 404 Not Found or 500 Server Error
@@ -20,8 +34,6 @@ fetch('./data.json')
         })
         .then (data =>
         {
-            const difference = 3;
-
             const downloadsElement = document.getElementById('downloads');
             downloadsElement.textContent = `Total Downloads: ${data.downloads}`;
             
