@@ -1,3 +1,13 @@
+const sqlite3 = require('sqlite3');
+const dbPath = './modmetrics.db';
+const database = new sqlite3.Database(dbPath, data =>
+{
+    if (err) 
+        console.error('Error connecting to modmetrics database in script.js', err.message);
+    else
+        console.log('Successfully connected to modmetrics database in script.js.');
+});
+
 fetch('./data.json')
         .then(response => 
         {
