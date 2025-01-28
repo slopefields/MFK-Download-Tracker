@@ -12,6 +12,7 @@ const database = new sqlite3.Database(dbPath, data =>
 // Sorts rows by date in descending order, restricts to first two rows, and retrieves values for "downloads"
 const query = 'SELECT downloads FROM metrics ORDER BY year DESC, month DESC, day DESC LIMIT 2';
 
+// Query database
 database.all(query, (err, rows) =>
 {
     if (err)
