@@ -29,7 +29,7 @@ database.serialize(() =>
 {
     const insertQuery = 'INSERT OR IGNORE INTO metrics (year, month, day, downloads, rating_score, latest_version) VALUES (?, ?, ?, ?, ?, ?)';
     
-    // Take (year, month, day) from earlier, and (downloads, rating_score, and latest_version) from deconstruction.
+    // Take (year, month, day) from previous code, and (downloads, rating_score, and latest_version) from destructuring.
     // run() used for non-returning queries
     database.run(insertQuery, [year, month, day, downloads, rating_score, latest_version], err =>
     {
