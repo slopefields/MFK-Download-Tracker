@@ -7,6 +7,7 @@ const dataPath = './data.json';
 // Using sync so that it waits to fully read before continuing
 const jsonData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
+// Connect to modmetrics.db
 const database = new sqlite3.Database(dbPath, err => {
     if (err) 
         console.error('Error connecting to modmetrics database: ', err.message);
