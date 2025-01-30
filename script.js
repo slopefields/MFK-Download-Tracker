@@ -54,3 +54,5 @@ fetch('./data.json')
             console.error('Error fetching data:', error);
             document.getElementById('downloads').textContent = 'Error fetching download data.'
         });
+
+        fetch ()
