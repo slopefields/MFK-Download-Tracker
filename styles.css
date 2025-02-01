@@ -1,13 +1,24 @@
-body
-{
-    background-color:#97B4BD;
+body {
+    background-color: #232323;
+    color: white;
 }
-h1
-{
-    color:blue;
+
+.turquoise {
+    background-color: #40E0D0;
 }
-#date-range-dropdown
-{
-    background-color:gray;
-    color:red;
+
+.celeste {
+    background-color: #A0EDE6;
+}
+
+.gray {
+    background-color: #959694;
+}
+
+.jet {
+    background-color: #2B2C28;
+}
+
+.night {
+    background-color: #131515;
 }
