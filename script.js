@@ -9,7 +9,8 @@ fetch('https://thunderstoreanalytics.onrender.com/data')
     })
     .then(data =>
     {
-
+        const totalDownloadElement = document.getElementById('downloads-total');
+        const rangedDownloadElement = document.getElementById('downloads-ranged');
     })
     // Handle network errors
     .catch(error => 
