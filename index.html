@@ -9,15 +9,15 @@
 </head>
 
 <body class="gray">
+    <!-- Header -->
     <h1>Metrics for mod: MoneyForKills</h1>
 
-
+    <!-- Mod Page Button -->
     <a href="https://thunderstore.io/c/lethal-company/p/Plotection/MoneyForKills/" target=_blank>
         <button class="rose">Go to Mod Page</button>
     </a>
 
-    <p id='downloads-total'>Fetching all time download data...</p>
-
+    <!-- Date Dropdown -->
     <label for="date-range" id="">Choose date range:</label>
     <select name="date-range" id='date-range-dropdown' class="rose">
         <option value="today">Today</option>
@@ -26,9 +26,13 @@
         <option value="year">This Year</option>
     </select>
 
+    <!-- Download Display-->
+    <p id='downloads-total'>Fetching all time download data...</p>
     <p id='downloads-ranged'>Fetching download data for date range...</p>
     <script src='script.js'></script>
 
+
+    <!-- Chart -->
     <div>
         <canvas id="downloadsChart"></canvas>
     </div>
