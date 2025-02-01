@@ -1,3 +1,5 @@
+let startDate, endDate;
+
 // Fetch data from backend API
 fetch('https://thunderstoreanalytics.onrender.com/data')
     .then(response =>
