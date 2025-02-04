@@ -20,9 +20,6 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, err =>
 // Enable CORS, cross-origin resource sharing
 app.use(cors());
 
-// Serve static files from the 'static' folder
-app.use(express.static(path.join(__dirname, 'static')));
-
 app.get('/data', (req, res) => {
     // Destructure query parameters from request
     const { start_date, end_date } = req.query;
