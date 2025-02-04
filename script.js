@@ -1,7 +1,11 @@
 let startDate, endDate;
 
+const formStartDate = document.getElementById('form-start-date');
+const formEndDate = document.getElementById('form-end-date');
 const dropdownSelection = document.getElementById('date-range-dropdown');
 const formButton = document.getElementById('confirm-form-button');
+
+
 
 dropdownSelection.addEventListener('change', function()
 {
@@ -9,7 +13,7 @@ dropdownSelection.addEventListener('change', function()
 });
 
 formButton.addEventListener('click', function(){
-
+    
 });
 
 // Fetch data from backend API
