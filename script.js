@@ -18,7 +18,7 @@ formButton.addEventListener('click', function(){
 });
 
 // Fetch data from backend API
-fetch('https://thunderstoreanalytics.onrender.com/data?start_date=${startDate}&end_date=${endDate}')
+fetch(`https://thunderstoreanalytics.onrender.com/data?start_date=${startDate}&end_date=${endDate}`)
     .then(response =>
     {
         // Handle HTTP errors
