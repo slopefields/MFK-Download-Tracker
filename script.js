@@ -1,8 +1,9 @@
 let startDate, endDate;
 
 const dropdownSelection = document.getElementById('date-range-dropdown');
-const dropdownButton = document.getElementById('confirm-dropdown-button');
 const formButton = document.getElementById('confirm-form-button');
+
+
 
 // Fetch data from backend API
 fetch('https://thunderstoreanalytics.onrender.com/data?start_date=${startDate}&end_date=${endDate}')
