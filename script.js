@@ -13,12 +13,19 @@ dropdownSelection.addEventListener('change', function()
 formButton.addEventListener('click', function(){
     if (!formStartDate.value || !formEndDate.value)
         alert('Enter both a start and end date!');
-    startDate = formStartDate.value;
-    endDate = formEndDate.value;
+    else
+    {
+        startDate = formStartDate.value;
+        endDate = formEndDate.value;
+
+        fetchData();
+    }
 });
 
-// Fetch data from backend API
-fetch(`https://thunderstoreanalytics.onrender.com/data?start_date=${startDate}&end_date=${endDate}`)
+// Fetch data from backend API after startDate and endDate have values
+function fetchData()
+{
+    fetch(`https://thunderstoreanalytics.onrender.com/data?start_date=${startDate}&end_date=${endDate}`)
     .then(response =>
     {
         // Handle HTTP errors
@@ -37,3 +44,4 @@ fetch(`https://thunderstoreanalytics.onrender.com/data?start_date=${startDate}&e
         console.error('Error fetching data:', error);
         document.getElementById('downloads').textContent = 'Error fetching download data.'
     });
+}
