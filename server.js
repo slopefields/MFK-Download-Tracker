@@ -23,6 +23,9 @@ app.use(cors());
 app.get('/data', (req, res) => {
     // Destructure query parameters from request
     const { start_date, end_date } = req.query;
+    
+    // Debugging
+    console.log(`Received start_date: ${start_date}, end_date: ${end_date}`);
 
     // Ensure both start date and end date are valid
     if (!start_date && !end_date)
@@ -30,6 +33,10 @@ app.get('/data', (req, res) => {
 
     const [startYear, startMonth, startDay] = start_date.split('-');
     const [endYear, endMonth, endDay] = end_date.split('-');
+
+    // Debugging
+    console.log(`startYear: ${startYear}, startMonth: ${startMonth}, startDay: ${startDay}`);
+    console.log(`endYear: ${endYear}, endMonth: ${endMonth}, endDay: ${endDay}`);
 
     const query = `
         SELECT year, month, day, downloads
@@ -39,8 +46,7 @@ app.get('/data', (req, res) => {
         ORDER BY year ASC, month ASC, day ASC
     `;
 
-    db.all(query, [
-        startYear, startYear, startMonth, startDay, endYear, endYear, endMonth, endDay], (err, rows) =>
+    db.all(query, [startYear, startYear, startMonth, startDay, endYear, endYear, endMonth, endDay], (err, rows) =>
     {
         if (err)
             return res.status(500).json({error : 'Error querying database: ' + err.message});
