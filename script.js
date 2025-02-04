@@ -1,4 +1,9 @@
+const { elements } = require("chart.js");
+
 let startDate, endDate;
+
+const totalDownloadElement = document.getElementById('downloads-total');
+const rangedDownloadElement = document.getElementById('downloads-ranged');
 
 const formStartDate = document.getElementById('form-start-date');
 const formEndDate = document.getElementById('form-end-date');
@@ -35,13 +40,27 @@ function fetchData()
     })
     .then(data =>
     {
-        const totalDownloadElement = document.getElementById('downloads-total');
-        const rangedDownloadElement = document.getElementById('downloads-ranged');
+        if (data.length == 0)
+        {
+            rangedDownloadElement.textContent = 'No data available';
+            return;
+        }
+        else if (data.length == 1)
+        {
+            rangedDownloadElement.textContent = `Downloads for selected date: ${data[0].downloads}`;
+        }
+        else
+        {
+            let latestDataFromRange = data[data.length - 1];
+            let firstDataFromRange = data[0];
+
+            rangedDownloadElement.textContent = `Downloads gained during this period: ${latestDataFromRange.downloads - firstDataFromRange.downloads}`;
+        }
     })
     // Handle network errors
     .catch(error => 
     {
         console.error('Error fetching data:', error);
-        document.getElementById('downloads').textContent = 'Error fetching download data.'
+        rangedDownloadElement.textContent = 'Error fetching data from server.';
     });
 }
