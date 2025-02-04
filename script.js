@@ -1,5 +1,3 @@
-const { elements } = require("chart.js");
-
 let startDate, endDate;
 
 const totalDownloadElement = document.getElementById('downloads-total');
