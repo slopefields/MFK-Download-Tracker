@@ -5,15 +5,16 @@ const formEndDate = document.getElementById('form-end-date');
 const dropdownSelection = document.getElementById('date-range-dropdown');
 const formButton = document.getElementById('confirm-form-button');
 
-
-
 dropdownSelection.addEventListener('change', function()
 {
     
 });
 
 formButton.addEventListener('click', function(){
-    
+    if (!formStartDate.value || !formEndDate.value)
+        alert('Enter both a start and end date!');
+    startDate = formStartDate.value;
+    endDate = formEndDate.value;
 });
 
 // Fetch data from backend API
