@@ -31,12 +31,23 @@ app.get('/data', (req, res) => {
     if (!start_date && !end_date)
         return res.status(400).json({error : 'Start date and end date both required.'});
 
-    const query = 'SELECT date, downloads FROM metrics WHERE date BETWEEN ? and ? ORDER BY date ASC';
+    const [startYear, startMonth, startDay] = start_date.split('-');
+    const [endYear, endMonth, endDay] = end_date.split('-');
 
-    db.all(query, [start_date, end_date], (err, rows) =>
+    const query = `
+        SELECT year, month, day, downloads
+        FROM metrics
+        WHERE (year > ? OR (year = ? AND (month > ? OR (month = ? AND day >= ?))))
+        AND (year < ? OR (year = ? AND (month < ? OR (month = ? AND day <= ?))))
+        ORDER BY year ASC, month ASC, day ASC
+    `;
+
+    db.all(query, [
+        startYear, startYear, startMonth, startDay, endYear, endYear, endMonth, endDay], (err, rows) =>
     {
         if (err)
             return res.status(500).json({error : 'Error querying database: ' + err.message});
+        
         // Get rows as a json
         res.json(rows);
     });
