@@ -38,8 +38,6 @@ function fetchData()
     })
     .then(data =>
     {
-        // Debugging
-        console.log('Data: ', data);
         if (data.length == 0)
         {
             rangedDownloadElement.textContent = 'No data available';
