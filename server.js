@@ -46,7 +46,7 @@ app.get('/data', (req, res) => {
         ORDER BY year ASC, month ASC, day ASC
     `;
 
-    db.all(query, [startYear, startYear, startMonth, startDay, endYear, endYear, endMonth, endDay], (err, rows) =>
+    db.all(query, [startYear, startYear, startMonth, startMonth, startDay, endYear, endYear, endMonth, endMonth, endDay], (err, rows) =>
     {
         if (err)
             return res.status(500).json({error : 'Error querying database: ' + err.message});
