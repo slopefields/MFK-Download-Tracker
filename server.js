@@ -50,7 +50,11 @@ app.get('/data', (req, res) => {
     {
         if (err)
             return res.status(500).json({error : 'Error querying database: ' + err.message});
-        
+
+        // Log query results
+        console.log("Query Results:", rows.length, "records found");
+        console.log(rows);
+
         // Get rows as a json
         res.json(rows);
     });
