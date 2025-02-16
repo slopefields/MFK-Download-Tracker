@@ -14,7 +14,7 @@ function updateChart(data)
   if (downloadsChart)
     downloadsChart.destroy();
 
-  myChart = new Chart(ctx, 
+  downloadsChart = new Chart(ctx, 
     {
       type: "line",
       data: {
