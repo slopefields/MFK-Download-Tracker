@@ -8,7 +8,7 @@ function updateChart(data)
   // Assign array of download data from query results to "downloads" (y-axis)
   const downloads = data.map(row => row.downloads);
 
-  const ctx = document.getElementById("downloadsChart");
+  const ctx = document.getElementById("downloads-chart");
 
   // Destroy previous graph, if there was one
   if (downloadsChart)
