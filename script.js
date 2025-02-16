@@ -68,11 +68,11 @@ function fetchData()
     });
 }
 
-// Check for server activity in 15 second intervals
+// Check server status via API call every 15 seconds
 function checkServerStatus()
 {
-    statusElement.textContent = 'Checking server status...';
-    statusElement.style.color = 'gray';
+    statusElement.textContent = 'Server status: Inactive';
+    statusElement.style.color = 'red';
     fetch('https://thunderstoreanalytics.onrender.com/data?start_date=2025-01-01&end_date=2025-01-01')
     .then(response => {
       if (response.ok) {
@@ -90,3 +90,4 @@ function checkServerStatus()
 }
 
 checkServerStatus();
+setInterval(checkServerStatus, 15000);
