@@ -8,6 +8,8 @@ const formEndDate = document.getElementById('form-end-date');
 const dropdownSelection = document.getElementById('date-range-dropdown');
 const formButton = document.getElementById('confirm-form-button');
 
+const statusElement = document.getElementById('server-status');
+
 dropdownSelection.addEventListener('change', function()
 {
     
@@ -65,3 +67,25 @@ function fetchData()
         rangedDownloadElement.textContent = 'Error fetching data from server.';
     });
 }
+
+// Check for server activity in 15 second intervals
+function checkServerStatus()
+{
+    fetch('https://thunderstoreanalytics.onrender.com/data?start_date=2025-01-01&end_date=2025-01-01')
+    .then(response => {
+      if (response.ok) {
+        statusElement.textContent = 'Server status: Active';
+        statusElement.style.color = 'green';
+      } else {
+        statusElement.textContent = 'Server status: Inactive';
+        statusElement.style.color = 'red';
+      }
+    })
+    .catch(error => {
+      statusElement.textContent = 'Server status: Inactive';
+      statusElement.style.color = 'red';
+    });
+}
+
+setInterval(checkServerStatus, 15000);
+checkServerStatus();
