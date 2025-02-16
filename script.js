@@ -52,6 +52,7 @@ function fetchData()
             let latestDataFromRange = data[data.length - 1];
             let firstDataFromRange = data[0];
 
+            totalDownloadElement.textContent = `Total downloads at this time: ${latestDataFromRange.downloads}`;
             rangedDownloadElement.textContent = `Downloads gained during this period: ${latestDataFromRange.downloads - firstDataFromRange.downloads}`;
         }
         // Call updateChart from downloads-chart.js
