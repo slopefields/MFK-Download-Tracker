@@ -71,6 +71,8 @@ function fetchData()
 // Check for server activity in 15 second intervals
 function checkServerStatus()
 {
+    statusElement.textContent = 'Checking server status...';
+    statusElement.style.color = 'gray';
     fetch('https://thunderstoreanalytics.onrender.com/data?start_date=2025-01-01&end_date=2025-01-01')
     .then(response => {
       if (response.ok) {
@@ -87,5 +89,4 @@ function checkServerStatus()
     });
 }
 
-setInterval(checkServerStatus, 15000);
 checkServerStatus();
