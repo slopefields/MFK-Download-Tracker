@@ -54,6 +54,8 @@ function fetchData()
 
             rangedDownloadElement.textContent = `Downloads gained during this period: ${latestDataFromRange.downloads - firstDataFromRange.downloads}`;
         }
+        // Call updateChart from downloads-chart.js
+        window.updateChart(data);
     })
     // Handle network errors
     .catch(error => 
