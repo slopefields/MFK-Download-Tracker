@@ -22,8 +22,8 @@ function updateChart(data)
         datasets: [{
           label: "Downloads",
           data: downloads,
-          borderColor: "red",
-          backgroundColor: "rgba(255, 0, 0, 0.1)",
+          borderColor: "white",
+          backgroundColor: "rgba(255, 255, 255, 0.5)",
           borderWidth: 2,
           pointRadius: 4,
           fill: true
