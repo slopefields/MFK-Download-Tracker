@@ -47,7 +47,9 @@ function fetchData()
         }
         else if (data.length == 1)
         {
-            rangedDownloadElement.textContent = `Downloads for selected date: ${data[0].downloads}`;
+            totalDownloadElement.textContent = `Total downloads at this time: ${data[0].downloads}`;
+            rangedDownloadElement.textContent = '';
+
         }
         else
         {
@@ -71,8 +73,8 @@ function fetchData()
 // Check server status via API call every 15 seconds
 function checkServerStatus()
 {
-    statusElement.textContent = 'Server status: Inactive';
-    statusElement.style.color = 'red';
+    statusElement.textContent = 'Checking server status...';
+    statusElement.style.color = 'gray';
     fetch('https://thunderstoreanalytics.onrender.com/data?start_date=2025-01-01&end_date=2025-01-01')
     .then(response => {
       if (response.ok) {
@@ -89,5 +91,7 @@ function checkServerStatus()
     });
 }
 
+statusElement.textContent = 'Server status: Inactive';
+statusElement.style.color = 'red';
 checkServerStatus();
-setInterval(checkServerStatus, 15000);
+setInterval(checkServerStatus, 30000);
