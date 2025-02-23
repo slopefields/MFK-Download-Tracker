@@ -1,5 +1,3 @@
-let startDate, endDate;
-
 const totalDownloadElement = document.getElementById('downloads-total');
 const rangedDownloadElement = document.getElementById('downloads-ranged');
 
@@ -12,23 +10,73 @@ const statusElement = document.getElementById('server-status');
 
 dropdownSelection.addEventListener('change', function()
 {
-    
-});
+    const today = new Date();
+    let start, end;
+
+    switch (dropdownSelection.value)
+    {
+        case 'choose-range':
+            break;
+        case 'today':
+            start = today;
+            end = today;
+            break;
+        case 'last-7-days':
+            start = new Date(today);
+            start.setDate(today.getDate() - 7);
+            end = today;
+            break;
+        case 'last-30-days':
+            start = new Date(today);
+            start.setDate(today.getDate() - 30);
+            end = today;
+            break;
+        case 'this-month':
+            start = new Date(today.getFullYear(), today.getMonth(), 1);
+            end = today;
+            break;
+        case 'last-month':
+            start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+            end = new Date(today.getFullYear(), today.getMonth(), 0);
+            break;
+        case 'this-year':
+            start = new Date(today.getFullYear(), 0, 1);
+            end = today;
+            break;
+        default:
+            return;
+    }
+
+        const formattedStart = start.toISOString().split('T')[0];
+        const formattedEnd = end.toISOString().split('T')[0];
+
+        console.log(formStartDate.value);
+        console.log(formEndDate.value);
+
+        // Reset custom form input
+        formStartDate.value = '';
+        formEndDate.value = '';
+
+        fetchData(formattedStart, formattedEnd);
+    });
 
 formButton.addEventListener('click', function(){
+    // Reset dropdown selection
+    dropdownSelection.value = 'choose-range';
+
     if (!formStartDate.value || !formEndDate.value)
         alert('Enter both a start and end date!');
     else
     {
-        startDate = formStartDate.value;
-        endDate = formEndDate.value;
+        let startDate = formStartDate.value;
+        let endDate = formEndDate.value;
 
-        fetchData();
+        fetchData(startDate, endDate);
     }
 });
 
 // Fetch data from backend API after startDate and endDate have values
-function fetchData()
+function fetchData(startDate, endDate)
 {
     fetch(`https://thunderstoreanalytics.onrender.com/data?start_date=${startDate}&end_date=${endDate}`)
     .then(response =>
