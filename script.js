@@ -118,11 +118,14 @@ function fetchData(startDate, endDate)
     });
 }
 
-// Check server status via API call every 15 seconds
+// Check server status via API call every 10 seconds
 function checkServerStatus()
 {
-    statusElement.textContent = 'Checking server status...';
-    statusElement.style.color = 'gray';
+    if (!statusElement.style.color == 'green')
+    {
+        statusElement.textContent = 'Checking server status...';
+        statusElement.style.color = 'gray';
+    }
     fetch('https://thunderstoreanalytics.onrender.com/data?start_date=2025-01-01&end_date=2025-01-01')
     .then(response => {
       if (response.ok) {
@@ -142,4 +145,4 @@ function checkServerStatus()
 statusElement.textContent = 'Server status: Inactive';
 statusElement.style.color = 'red';
 checkServerStatus();
-setInterval(checkServerStatus, 30000);
+setInterval(checkServerStatus, 10000);
