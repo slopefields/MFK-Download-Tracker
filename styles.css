@@ -48,7 +48,7 @@ h1 {
     padding: 20px;
     position: fixed;
     left: 0;
-    top: 80px;
+    top: 82px;
 }
 
 .content {
@@ -114,7 +114,7 @@ button:hover {
 
 .main-area {
     background-color: #303030;
-    padding: 20px;
+    padding: 25px;
     border-radius: 10px;
     height: 90vh;
 }
@@ -122,7 +122,13 @@ button:hover {
 #downloads-chart {
     margin-top: 20px;
     width: 100%;
-    height: 400px;
+    height: 100%;
+}
+
+#chart-container {
+    width: 100%;
+    height: 750px;
+    margin: auto;
 }
 
 #form-start-date {
