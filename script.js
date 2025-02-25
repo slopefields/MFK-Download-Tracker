@@ -6,9 +6,11 @@ const formEndDate = document.getElementById('form-end-date');
 const dropdownSelection = document.getElementById('date-range-dropdown');
 const formButton = document.getElementById('confirm-form-button');
 
+const chartOption = document.getElementById('chart-option-dropdown');
+
 const statusElement = document.getElementById('server-status');
 
-const gainedChart = true;
+let gainedChart = false;
 
 dropdownSelection.addEventListener('change', function()
 {
@@ -64,10 +66,12 @@ dropdownSelection.addEventListener('change', function()
     }
         const formattedEnd = end.toISOString().split('T')[0];
 
+        // Log end and adjusted start
         console.log(`Adjusted start: ${formattedStart}, End: ${formattedEnd}`);
-
-        console.log(formStartDate.value);
-        console.log(formEndDate.value);
+ 
+        // Store dates in dataset attributes for retrieval
+        dropdownSelection.dataset.startDate = formattedStart;
+        dropdownSelection.dataset.endDate = formattedEnd;
 
         // Reset custom form input
         formStartDate.value = '';
@@ -87,6 +91,17 @@ formButton.addEventListener('click', function(){
         let startDate = formStartDate.value;
         let endDate = formEndDate.value;
 
+        fetchData(startDate, endDate);
+    }
+});
+
+chartOption.addEventListener('change', function(){
+    gainedChart = chartOption.value === "gained-per-day";
+    console.log(gainedChart);
+    const startDate = formStartDate.value || dropdownSelection.dataset.startDate;
+    const endDate = formEndDate.value || dropdownSelection.dataset.endDate;
+
+    if (startDate && endDate) {
         fetchData(startDate, endDate);
     }
 });
