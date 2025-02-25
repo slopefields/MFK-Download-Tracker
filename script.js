@@ -8,6 +8,8 @@ const formButton = document.getElementById('confirm-form-button');
 
 const statusElement = document.getElementById('server-status');
 
+const gainedChart = true;
+
 dropdownSelection.addEventListener('change', function()
 {
     const today = new Date();
@@ -47,8 +49,22 @@ dropdownSelection.addEventListener('change', function()
             return;
     }
 
-        const formattedStart = start.toISOString().split('T')[0];
+    if (gainedChart)
+    {
+        // Adjust start to be one day earlier to ensure difference can be found
+        let adjustedStart = new Date(start);
+        adjustedStart.setDate(adjustedStart.getDate() - 1);
+
+        var formattedStart = adjustedStart.toISOString().split('T')[0];
+    }
+    else
+    {
+        // No need to adjust if not finding difference
+        var formattedStart = start.toISOString().split('T')[0];
+    }
         const formattedEnd = end.toISOString().split('T')[0];
+
+        console.log(`Adjusted start: ${formattedStart}, End: ${formattedEnd}`);
 
         console.log(formStartDate.value);
         console.log(formEndDate.value);
@@ -61,19 +77,35 @@ dropdownSelection.addEventListener('change', function()
     });
 
 formButton.addEventListener('click', function(){
-    // Reset dropdown selection
-    dropdownSelection.value = 'choose-range';
-
     if (!formStartDate.value || !formEndDate.value)
         alert('Enter both a start and end date!');
     else
     {
+        // Reset dropdown selection
+        dropdownSelection.value = 'choose-range';
+
         let startDate = formStartDate.value;
         let endDate = formEndDate.value;
 
         fetchData(startDate, endDate);
     }
 });
+
+// Calculate downloads gained per day
+function calculateGained(data)
+{
+    let gained = [];
+    for (let i = 1; i < data.length; i++)
+    {
+        gained.push({
+            year : data[i].year,
+            month : data[i].month,
+            day : data[i].day,
+            downloadsGained : data[i].downloads - data[i - 1].downloads
+        });
+    }
+    return gained;
+}
 
 // Fetch data from backend API after startDate and endDate have values
 function fetchData(startDate, endDate)
@@ -93,22 +125,29 @@ function fetchData(startDate, endDate)
             rangedDownloadElement.textContent = 'No data available';
             return;
         }
-        else if (data.length == 1)
+        // If chart set to display downloads gained a day
+        else if (gainedChart)
         {
-            totalDownloadElement.textContent = `Total downloads at this time: ${data[0].downloads}`;
-            rangedDownloadElement.textContent = '';
-
+            data = calculateGained(data);
         }
+        // If chart set to show total downloads per day
         else
         {
+            console.log(data);
+            if (data.length == 1)
+            {
+                totalDownloadElement.textContent = `Total downloads at this time: ${data[0].downloads}`;
+                rangedDownloadElement.textContent = '';
+            }
             let latestDataFromRange = data[data.length - 1];
             let firstDataFromRange = data[0];
 
             totalDownloadElement.textContent = `Total downloads at this time: ${latestDataFromRange.downloads}`;
             rangedDownloadElement.textContent = `Downloads gained during this period: ${latestDataFromRange.downloads - firstDataFromRange.downloads}`;
         }
+        console.log(data);
         // Call updateChart from downloads-chart.js
-        window.updateChart(data);
+        window.updateChart(data, gainedChart);
     })
     // Handle network errors
     .catch(error => 
