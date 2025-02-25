@@ -19,19 +19,11 @@ function updateChart(data, isGainedChart)
   // Assign array of dates from query results to "dates" (x-axis)
   const dates = data.map(row => `${row.year}-${row.month}-${row.day}`);
 
-
-  
-
   const ctx = document.getElementById("downloads-chart");
-
-  
 
   // Destroy previous graph, if there was one
   if (downloadsChart)
     downloadsChart.destroy();
-
-  
-
 
   downloadsChart = new Chart(ctx, 
     {
@@ -66,7 +58,7 @@ function updateChart(data, isGainedChart)
             beginAtZero: isGainedChart, // Only starting at 0 if gained chart
             title: {
               display: true,
-              text: "Downloads"
+              text: chartLabel
             }
           }
         }
