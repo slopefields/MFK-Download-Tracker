@@ -46,7 +46,7 @@ function updateChart(data, isGainedChart)
           tooltip: {
             callbacks: {
               afterLabel: function(context) {
-                return "Version: " + data.latest_version;
+                return "Version: " + data[context.dataIndex].latest_version;
               }
             }
           }
