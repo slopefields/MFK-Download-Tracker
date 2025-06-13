@@ -42,6 +42,15 @@ function updateChart(data, isGainedChart)
       },
       options: {
         responsive: true,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              afterLabel: function(context) {
+                return "Version: " + data.latest_version;
+              }
+            }
+          }
+        },
         scales: {
           x: {
             title: {

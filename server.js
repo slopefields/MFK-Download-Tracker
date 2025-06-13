@@ -39,7 +39,7 @@ app.get('/data', (req, res) => {
     console.log(`endYear: ${endYear}, endMonth: ${endMonth}, endDay: ${endDay}`);
 
     const query = `
-        SELECT year, month, day, downloads
+        SELECT year, month, day, downloads, latest_version
         FROM metrics
         WHERE (year > ? OR (year = ? AND (month > ? OR (month = ? AND day >= ?))))
         AND (year < ? OR (year = ? AND (month < ? OR (month = ? AND day <= ?))))

@@ -148,7 +148,6 @@ function fetchData(startDate, endDate)
         // If chart set to show total downloads per day
         else
         {
-            console.log(data);
             if (data.length == 1)
             {
                 totalDownloadElement.textContent = `Total downloads at this time: ${data[0].downloads}`;
@@ -160,7 +159,7 @@ function fetchData(startDate, endDate)
             totalDownloadElement.textContent = `Total downloads at this time: ${latestDataFromRange.downloads}`;
             rangedDownloadElement.textContent = `Downloads gained during this period: ${latestDataFromRange.downloads - firstDataFromRange.downloads}`;
         }
-        console.log(data);
+        console.log(`DATA: ${JSON.stringify(data)}`);
         // Call updateChart from downloads-chart.js
         window.updateChart(data, gainedChart);
     })
