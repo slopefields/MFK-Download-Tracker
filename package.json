@@ -1,5 +1,5 @@
 {
-  "name": "thunderstore-analytics",
+  "name": "mfk-download-tracker",
   "version": "1.0.0",
   "description": "Server to store mod data using SQLite",
   "homepage": "https://github.com/slopefields/ThunderstoreAnalytics#readme",

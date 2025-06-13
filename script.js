@@ -179,7 +179,7 @@ function checkServerStatus()
         statusElement.textContent = 'Checking server status...';
         statusElement.style.color = 'gray';
     }
-    fetch('https://thunderstoreanalytics.onrender.com/data?start_date=2025-01-01&end_date=2025-01-01')
+    fetch('https://mfk-download-tracker.onrender.com/data?start_date=2025-01-01&end_date=2025-01-01')
     .then(response => {
       if (response.ok) {
         statusElement.textContent = 'Server status: Active';
