@@ -161,6 +161,7 @@ function fetchData(startDate, endDate)
             rangedDownloadElement.textContent = `Downloads gained during this period: ${latestDataFromRange.downloads - firstDataFromRange.downloads}`;
         }
         console.log(`DATA: ${JSON.stringify(data)}`);
+        console.log(`${data.length} entries.`)
         // Call updateChart from downloads-chart.js
         window.updateChart(data, gainedChart);
     })
