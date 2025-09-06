@@ -21,7 +21,7 @@ const year = currentDate.getFullYear();
 const month = currentDate.getMonth() + 1; // Adding 1 because zero-indexed (Jan = 0, Sep = 8, etc.)
 const day = currentDate.getDate(); // getDay returns day of the week (like Monday) while getDate returns day of month (like 23)
 
-// Object destructuring: basically the same as const year = jsonData.year, const downloads = jsonData.downloads, etc.
+// Extract data from json
 const { downloads, rating_score, latest_version } = jsonData;
 
 // Using serialize so that each step finishes before the next
