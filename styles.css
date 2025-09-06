@@ -13,7 +13,7 @@ body {
     justify-content: space-between;
     padding: 20px;
     background-color: #181818;
-    border-bottom: 2px solid #c19f9e;
+    border-bottom: 2px solid #3E9CB0;
     position: sticky;
     top: 0;
 }
@@ -23,7 +23,7 @@ h1 {
 }
 
 .view-mod-btn {
-    background-color: #c19f9e;
+    background-color: #3E9CB0;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -67,7 +67,7 @@ h1 {
 }
 
 h3 {
-    color: #c19f9e;
+    color: #3E9CB0;
 }
 
 label,
@@ -83,7 +83,7 @@ button {
     padding: 5px;
     font-size: 16px;
     border-radius: 5px;
-    border: 1px solid #a6a6a6;
+    border: 1px solid #FFFFFF;
     background-color: #181818;
     color: white;
     width: 100%;
@@ -91,17 +91,17 @@ button {
 
 select:focus,
 input:focus {
-    border-color: #c19f9e;
+    border-color: #3E9CB0;
 }
 
 button {
-    background-color: #d1b864;
+    background-color: #3E9CB0;
     color: white;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #c1a056;
+    background-color: #4EC8DE;
     box-shadow: 0 0 10px #4A90E2;
 }
 

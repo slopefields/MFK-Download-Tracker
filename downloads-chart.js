@@ -33,9 +33,9 @@ function updateChart(data, isGainedChart)
         datasets: [{
           label: chartLabel,
           data: chartData,
-          borderColor: "white",
-          backgroundColor: "rgba(255, 255, 255, 0.5)",
-          borderWidth: 2,
+          borderColor: "#1CA4FF",
+          backgroundColor: "rgba(65, 123, 166, 0.7)",
+          borderWidth: 5,
           pointRadius: 4,
           fill: true
         }]
